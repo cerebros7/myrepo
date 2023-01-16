@@ -1,0 +1,11 @@
+@EndUserText.label: 'Room FI'
+@MappingRole: true
+define role Z_I_Room_011
+{
+  grant
+    select
+        on
+            ZI_FI
+                where
+                    (IBAN) = aspect pfcg_auth(Z_LOCAO011, Z_LOCAFI, ACTVT = '03');  
+}

@@ -1,0 +1,11 @@
+@EndUserText.label: 'Room for CO'
+@MappingRole: true
+define role Z_I_ROOMCO_001 {
+    grant 
+        select
+            on
+                ZI_CO
+                    where
+                        (costcenter) = aspect pfcg_auth(Z_LOCAOCO, Z_LOCAFCO, ACTVT = '03');
+                        
+}

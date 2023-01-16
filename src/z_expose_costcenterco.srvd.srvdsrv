@@ -1,0 +1,4 @@
+@EndUserText.label: 'Service Definition for CostcenterCO'
+define service Z_EXPOSE_CostcenterCO {
+  expose ZC_CO as CostCenter;
+}

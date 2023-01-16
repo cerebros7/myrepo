@@ -1,0 +1,48 @@
+@Metadata.layer: #CORE
+@UI: {
+  headerInfo: { typeName: 'Cost Center',
+                typeNamePlural: 'Cost Centers',
+                title: { type: #STANDARD, label: 'Cost Center', value: 'Id' }  },
+                presentationVariant: [{ sortOrder: [{ by: 'Id', direction:  #ASC }] }] }
+
+annotate view ZC_CO with
+{
+@UI.facet: [ { id:              'UXdemo',
+                 purpose:         #STANDARD,
+                 type:            #IDENTIFICATION_REFERENCE,
+                 label:           'Cost Center',
+                 position:        10 } ]
+
+@UI:{ identification: [{ position: 1, label: 'Id' }] }
+  Id;
+
+  @UI: {  lineItem:       [ { position: 20 } ],
+        identification: [ { position: 20 } ],
+        selectionField: [ { position: 20 } ] }
+  Companyname;
+
+  @UI: {  lineItem:       [ { position: 30 } ],
+        identification: [ { position: 30 } ],
+        selectionField: [ { position: 30 } ] }
+  Controllingarea;
+
+  @UI: {  lineItem:       [ { position: 40 } ],
+        identification: [ { position: 40 } ] }
+  Costcenter;
+  
+  @UI: {  lineItem:       [ { position: 50 } ],
+        identification: [ { position: 50 } ] }
+  Responsibleperson;
+
+   @UI: {  lineItem:       [ { position: 60 } ],
+        identification: [ { position: 60 } ],
+        selectionField: [ { position: 60 } ] }
+  Companycode;
+  
+  @UI.hidden: true
+  LastChangedAt;
+
+  @UI.hidden: true
+  LocalLastChangedAt;
+
+}

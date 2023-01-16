@@ -1,0 +1,4 @@
+@EndUserText.label: 'Service Definition for CustomerFI'
+define service Z_EXPOSE_CustomerFI {
+  expose ZC_FI as Customer;
+}

@@ -1,0 +1,40 @@
+managed;
+with draft;
+
+define behavior for ZI_FI alias Customer
+implementation in class zbp_i_fi_01 unique
+persistent table zrap_customer
+draft table zdr_customer
+lock master total etag LastChangedAt
+etag master LocalLastChangedAt
+{
+  create;
+  update;
+  delete;
+
+  field ( numbering : managed, readonly ) Id;
+  field ( readonly ) Active;
+  field ( readonly ) LastChangedAt, LocalLastChangedAt;
+
+  action ( features : instance ) setActive result [1] $self;
+  //determination changeSalary on save { field Role; }
+  validation validateIban on save { field IBAN; create; }
+
+
+  mapping for zrap_customer
+  {
+    Id = id;
+    CompanyName = companyname;
+    StreetName = Streetname;
+    PostalCode = POSTAlCODE;
+    City = CITY;
+    CountryCode = COUNTRYCODE;
+    PhoneNumber = PHONENUMBER;
+    EmailAdress = EMAILAdress;
+    Iban        = iban;
+    contactperson = Contactperson;
+    Active = active;
+    LastChangedAt = last_changed_at;
+    LocalLastChangedAt = local_last_changed_at;
+  }
+}

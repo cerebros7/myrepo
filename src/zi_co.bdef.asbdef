@@ -1,0 +1,34 @@
+managed;
+with draft;
+
+define behavior for ZI_CO alias CostCenter
+implementation in class zbp_i_co_01 unique
+persistent table zrap_costcenter
+draft table zdr_costcenter
+lock master total etag LastChangedAt
+etag master LocalLastChangedAt
+{
+  create;
+  update;
+  delete;
+
+  field ( numbering : managed, readonly ) Id;
+  field ( readonly ) LastChangedAt, LocalLastChangedAt;
+
+  action ( features : instance ) setActive result [1] $self;
+  //determination changeSalary on save { field Role; }
+  validation validatecostcenter on save { field CostCenter; create; }
+
+
+  mapping for zrap_costcenter
+  {
+    Id = id;
+    CompanyName = companyname;
+    ControllingArea = Controllingarea;
+    CostCenter = Costcenter;
+    ResponsiblePerson = Responsibleperson;
+    CompanyCode = Companycode;
+    LastChangedAt = last_changed_at;
+    LocalLastChangedAt = local_last_changed_at;
+  }
+}
